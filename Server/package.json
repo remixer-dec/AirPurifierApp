@@ -1,0 +1,19 @@
+{
+  "name": "airpfdataserver",
+  "version": "1.0.0",
+  "description": "server to get data from Xiaomi Mi Air purifier",
+  "main": "index.js",
+  "dependencies": {
+    "miio": "^0.15.6",
+    "nodejs-websocket": "^1.7.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Remixer Dec",
+  "license": "MIT",
+  "private": true
+}

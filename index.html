@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    	<link rel="stylesheet" href="./lib/css/font-awesome.min.css"/>
+    	<script src="./lib/font-awesome.min.js"></script>
+        <script src="./lib/vue.min.js"></script>
+        <title>AirPurifierUI</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="panels" id="app">
+            <div class="panel panel1">
+                <div class="topbar">
+                    <div class="temperature ms">
+                        <i class="fa fa-thermometer-quarter"></i>
+                        {{d.temp}}°</div>
+                    <div class="humidity ms">
+                        <i class="fa fa-tint"></i>
+                        {{d.hum}}%</div>
+                    <div class="quality ms">
+                        <i class="fa fa-tree"></i>
+                        {{d.qua}}</div>
+                </div>
+                <div class="powerbtn" v-bind:class="{off: isOff}" @click="togglePower()">
+                    <i class="fa fa-power-off"></i>
+                </div>
+                <div class="minibtns">
+                    <div class="mbtn" v-bind:class="{off: !isAuto}" @click="toggleAuto()">AUTO</div>
+                    <div class="mbtn" v-bind:class="{off: !isSoundOn}" @click="toggleBuzzer()">
+                        <i class="fa fa-volume-up"></i>
+                    </div>
+                    <div class="mbtn" v-bind:class="{off: !isSleeping}" @click="toggleSleep()">SLEEP</div>
+                </div>
+                <div class="airpower">
+                    <input type="range" max="16"  @change="setFL" name="" id="" v-model="fvl" :disabled="isSleeping||isAuto">
+                </div>
+            </div>
+            <div class="panel panel2">
+                <canvas id="HChart"></canvas>
+            </div>
+        </div>
+        <div class="tabs" id="tabs">
+            <span @click="switchTab(0)" v-bind:class="{tabSelected: tab==0}"><i class="fa fa-home"></i></span>
+            <span @click="switchTab(1)" v-bind:class="{tabSelected: tab==1}"><i class="fa fa-database"></i></span>
+        </div>
+    <script src="./lib/Chart.min.js"></script>
+    <script src="client.js"></script>
+    </body>
+</html>
