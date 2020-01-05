@@ -1,7 +1,7 @@
 ## AirPurifierApp  
 A small web-app to control Xiaomi Mi Air Purifier (2) and capture it's stats.  
 
-![Screenshot](https://i.imgur.com/hfD9Rdw.png)  
+![Screenshot](https://i.imgur.com/yJPyWEy.png)  
 
 ### Installation  
 1) Navigate to Server folder  
