@@ -71,7 +71,7 @@ div{
     height: 2em;
     line-height: 2em;
     font-family: monospace;
-    flex: 0 0 10%;
+    flex: 1;
     margin: 0 2em;
     width: 2em;
     align-items: center;
@@ -164,6 +164,7 @@ input[type=range]:disabled::-webkit-slider-thumb {
     color: #ddd;
     font-family: sans-serif;
     text-align:  center;
+    width: 2.1em;
 }
 
 .off {
