@@ -1,0 +1,20 @@
+{
+  "name": "AirPurifierApp",
+  "description": "Mi Air Purifier App",
+  "short_name": "AirPurifier",
+  "scope": "/",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "serviceworker": {
+    "src": "sw.js",
+    "scope": "/"
+  },
+"theme_color": "#4CAF50",
+"background_color": "#FFFFFF"
+}

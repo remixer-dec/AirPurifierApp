@@ -1,4 +1,10 @@
 var WSIP = "ws://127.0.0.1:42042"
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    console.log('loaded')
+    navigator.serviceWorker.register('./sw.js');
+  });
+}
 var app = new Vue({
   el: '#app',
   data: {

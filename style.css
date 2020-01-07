@@ -131,7 +131,7 @@ input[type=range]:disabled::-webkit-slider-thumb {
     max-width: 400px;
 }
 
-.tabs svg {
+.tabs i {
     background: #ddd;
     color: #fff;
     flex: 1;
@@ -146,13 +146,13 @@ input[type=range]:disabled::-webkit-slider-thumb {
     z-index: 20;
 }
 
-.tabs svg:first-child {
+.tabs i:first-child {
     border-right: 2px solid #cfcfcf;
 }
 
-.tabs .tabSelected svg{
+.tabs .tabSelected i{
     background: #4caf50;
-    height: 1.6em;
+    font-size: 1.6em;
 }
 
 .topbar {
@@ -223,7 +223,7 @@ input[type=range]:disabled::-webkit-slider-thumb {
     transform:  translateX(0);
 }
 
-.ms svg {
+.ms i {
     padding: 4px 10px;
 }
 
