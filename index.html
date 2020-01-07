@@ -8,10 +8,13 @@
         <script src="./lib/vue.min.js"></script>
         <title>AirPurifierUI</title>
         <link rel="stylesheet" href="style.css"/>
+        <link rel="icon" type="image/png" href="icon.png" sizes="512x512" />
     </head>
     <body>
         <div class="panels" id="app">
             <div class="panel panel1">
+                <i class="status-icon fa fa-globe" title="No internet connection" v-bind:class="{visible: !isOnline}"></i>
+                <i class="status-icon icon-right fa fa-wifi" title="WebSocket connection error. Click to edit configuration" v-bind:class="{visible: !isConnected}" @click="askWSServer()"></i>
                 <div class="topbar">
                     <div class="temperature ms">
                         <i class="fa fa-thermometer-quarter"></i>

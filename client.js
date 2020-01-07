@@ -17,11 +17,17 @@ var app = new Vue({
     isAuto: false,
     isSleeping: false,
     isSoundOn: false,
+    isOnline: true,
+    isConnected: true,
     fvl: localStorage['fvl'] ? 1 * localStorage['fvl'] : 10
   }
 })
 
 var tabs = new Vue({el: '#tabs', data: {tab: 0}})
+
+window.addEventListener('online', () => app.isOnline = true);
+window.addEventListener('offline', () => app.isOnline = false);
+
 function toggleBuzzer(){
     ws.send(app.isSoundOn ? "setBuzzer:0" : "setBuzzer:1")
     app.isSoundOn = !app.isSoundOn
@@ -68,13 +74,31 @@ function updateState(state){
     }
 }
 
-ws = new WebSocket(WSIP)
-ws.onopen = function(){
-    setTimeout(()=>ws.send('getState'),10)
+function connectWS(ip){
+    var ws = new WebSocket(WSIP)
+    ws.onopen = function(){
+        app.isConnected = true
+        setTimeout(function(){ws.send('getState')},10)
+    }
+    ws.onmessage = function(event){
+        console.log(event.data)
+        updateState(JSON.parse(event.data))
+    }
+    ws.onerror = ws.onclose = function(){
+        app.isConnected = false
+    }
+    return ws
 }
-ws.onmessage = function(event){
-  console.log(event.data)
-  updateState(JSON.parse(event.data))
+
+var ws
+ws = connectWS(localStorage['customip'] || WSIP)
+
+function askWSServer(){
+    var s = prompt('WS Server', localStorage['customip'] || WSIP)
+    if(s){
+        localStorage['customip'] = s
+        connectWS(s)
+    }
 }
 
 function switchTab(n){
@@ -89,6 +113,7 @@ var dss = {
     q: [],
     h: []
 }
+
 function maxArrayCheck(){
     if(dss.l.length > 20){
         dss.l.shift()
@@ -102,6 +127,7 @@ var tempChart = renderChart(ctx, dss.l,[
     {label: 'Temperature', data: dss.t, hex: '#4CAF50', rgb: '76,175,80'},
     {label: 'PM2.5', data: dss.q, hex: '#FF7043', rgb: '255,112,67'},
 ])
+
 function dsStyleGen(ds){
     var grad = ctx.createLinearGradient(0, 22, 0, 50);
     grad.addColorStop(0, 'rgba(' + ds.rgb + ', 0)');
@@ -124,6 +150,7 @@ function dsStyleGen(ds){
       borderWidth: 1
     }
 }
+
 function renderChart(ctx, titles, datasets){
     var dsa = []
     for(var d in datasets){
@@ -148,4 +175,5 @@ function renderChart(ctx, titles, datasets){
        }
    });
 }
-setInterval(()=>ws.send('getState'),30000)
+
+setInterval(function(){ws.send('getState')},30000)

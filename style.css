@@ -227,4 +227,28 @@ input[type=range]:disabled::-webkit-slider-thumb {
     padding: 4px 10px;
 }
 
-.tabs span {flex:  1;display:  flex;}
+.tabs span {
+    flex:  1;
+    display:  flex;
+}
+
+.status-icon {
+    top: 0;
+    position: fixed;
+    left: 0;
+    display: block;
+    font-size: 1.4em;
+    margin: 4px;
+    color: #e53935;
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.icon-right {
+    left: auto;
+    right: 0;
+}
+
+.visible {
+    opacity: 1;
+}
