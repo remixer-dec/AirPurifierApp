@@ -4,11 +4,11 @@
   "description": "server to get data from Xiaomi Mi Air purifier",
   "main": "index.js",
   "dependencies": {
-    "miio": "^0.15.6",
+    "miio": "git+https://github.com/wisniaklo/miio.git",
     "nodejs-websocket": "^1.7.2"
   },
   "devDependencies": {
-    "webpack": "^4.41.5"
+    "webpack": "^5.11.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

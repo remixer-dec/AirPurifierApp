@@ -18,7 +18,6 @@ function initServer(d){
         })
         conn.on("text", function (str) {
                console.log("Received "+str)
-               console.log(conn)
                parseCommand(str).then(reply=>{
                    if(reply){
                        conn.sendText(reply)
