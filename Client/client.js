@@ -25,8 +25,8 @@ var app = new Vue({
 
 var tabs = new Vue({el: '#tabs', data: {tab: 0}})
 
-window.addEventListener('online', () => app.isOnline = true);
-window.addEventListener('offline', () => app.isOnline = false);
+window.addEventListener('online', function(){ app.isOnline = true });
+window.addEventListener('offline', function(){ app.isOnline = false });
 
 function toggleBuzzer(){
     ws.send(app.isSoundOn ? "setBuzzer:0" : "setBuzzer:1")
