@@ -6,8 +6,8 @@ A small web-app to control Xiaomi Mi Air Purifier (only the 2nd model was tested
 ### Installation  
 0) Move Server directory somewhere from the root directory
 1) Navigate to Server directory  
-2) Run `npm install`  
-3) Run `node miio-fix`  
+2) Run `npm ci` or `npm install`  
+3) ~~Run `node miio-fix`~~ Starting from v1.1, it runs automatically as postinstall script  
 4) Edit config.js (You have to set up miio token first, see more info in miio docs)  
 5) Run `node index.js` to start the server  
 6) If you're using different IP/Port, edit the first line of client.js in the root directory.  
